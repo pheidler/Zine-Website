@@ -3,7 +3,6 @@ import Header from "./Components/Header.js";
 import Footer from "./Components/Footer.js";
 import CssBaseline from "@mui/material/CssBaseline";
 import pdfFile from "./resources/FinanceZine.pdf";
-import "./styles/App.css";
 
 function App() {
   return (

@@ -16,7 +16,7 @@ function PdfViewer(props) {
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page) => (
-            <Page pageNumber={page} />
+            <Page pageNumber={page} key={page} />
           ))}
       </Document>
     </Paper>
