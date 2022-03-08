@@ -8,7 +8,7 @@ function ZineList(props) {
   return (
     <>
       {!isMultipleZines ? (
-        Zines.map((zine) => <ZineCard zine={zine} />)
+        Zines.map((zine) => <ZineCard zine={zine} key="0" />)
       ) : (
         <Carousel>
           {Zines.map((zine, index) => (
