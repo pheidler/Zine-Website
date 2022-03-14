@@ -1,3 +1,4 @@
+// @ts-ignore
 import FinanceZine from "../resources/zines/FinanceZine.pdf";
 
 export const Zines = [
