@@ -8,38 +8,38 @@ function ZineCard(props) {
   const navigate = useNavigate();
   const { zine } = props;
   return (
-    <Card>
+    <Card className={styles.card}>
       <Card.Img
         onClick={() => {
           navigate(`/zines/${zine.path}`);
         }}
         variant="top"
         src={zine.thumbnail.default}
+        className={styles.cardImage}
       />
-      <Card.Body>
-        <Card.Title>{zine.title}</Card.Title>
-        <Stack gap={3} direction="horizontal">
+      <Card.Body className={styles.cardBody}>
+        <Card.Title className={styles.cardTitle}>{zine.title}</Card.Title>
+        <Stack
+          gap={3}
+          direction="horizontal"
+          className={styles.cardButtonStack}
+        >
+          <a href={zine.file} download={`${zine.path}.pdf`}>
+            <Download className={styles.buttonIcon} size={20} />
+          </a>
+
+          <Share
+            className={`${styles.buttonIcon} ${styles.linkIcon}`}
+            size={20}
+            onClick={() => console.log("Clicked")}
+          />
           <Button
             className={styles.button}
-            variant="primary"
             onClick={() => {
               navigate(`/zines/${zine.path}`);
             }}
           >
             Open
-          </Button>
-          <a href={zine.file} download={`${zine.path}.pdf`}>
-            <Button className={styles.iconButton} variant="outline-secondary">
-              <Download className={styles.buttonIcon} size={20} />
-            </Button>
-          </a>
-
-          <Button className={styles.iconButton} variant="outline-secondary">
-            <Share
-              className={styles.buttonIcon}
-              size={20}
-              onClick={() => console.log("Clicked")}
-            />
           </Button>
         </Stack>
       </Card.Body>
