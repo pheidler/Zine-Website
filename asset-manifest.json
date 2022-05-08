@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Zine-Website/static/css/main.34fc8aab.chunk.css",
+    "main.js": "/Zine-Website/static/js/main.66e34db7.chunk.js",
+    "main.js.map": "/Zine-Website/static/js/main.66e34db7.chunk.js.map",
+    "runtime-main.js": "/Zine-Website/static/js/runtime-main.33698978.js",
+    "runtime-main.js.map": "/Zine-Website/static/js/runtime-main.33698978.js.map",
+    "static/js/2.6407e948.chunk.js": "/Zine-Website/static/js/2.6407e948.chunk.js",
+    "static/js/2.6407e948.chunk.js.map": "/Zine-Website/static/js/2.6407e948.chunk.js.map",
+    "3bc629d5f743a1772f7a775c5f5fb0c1.js": "/Zine-Website/3bc629d5f743a1772f7a775c5f5fb0c1.js",
+    "3bc629d5f743a1772f7a775c5f5fb0c1.js.LICENSE.txt": "/Zine-Website/3bc629d5f743a1772f7a775c5f5fb0c1.js.LICENSE.txt",
+    "index.html": "/Zine-Website/index.html",
+    "static/css/main.34fc8aab.chunk.css.map": "/Zine-Website/static/css/main.34fc8aab.chunk.css.map",
+    "static/js/2.6407e948.chunk.js.LICENSE.txt": "/Zine-Website/static/js/2.6407e948.chunk.js.LICENSE.txt",
+    "static/media/FinanceZine.png": "/Zine-Website/static/media/FinanceZine.351a35aa.png",
+    "static/media/FinanceZine.59a20d77.pdf": "/Zine-Website/static/media/FinanceZine.59a20d77.pdf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.33698978.js",
+    "static/js/2.6407e948.chunk.js",
+    "static/css/main.34fc8aab.chunk.css",
+    "static/js/main.66e34db7.chunk.js"
+  ]
+}
