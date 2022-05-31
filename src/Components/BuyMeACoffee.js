@@ -11,17 +11,15 @@ export default function BuyMeACoffee() {
     );
     script.setAttribute("data-name", "BMC-Widget");
     script.setAttribute("data-cfasync", "false");
-    script.setAttribute("data-id", "wuUZsIOSP");
-    script.setAttribute("data-description", "Support me on Buy me a coffee!");
+    script.setAttribute("data-id", "kirak");
     script.setAttribute(
-      "data-message",
-      "Buying a single coffee for me is 1000 times worth than a Thankyou "
+      "data-description",
+      "Support me by buying me a coffee!"
     );
     script.setAttribute("data-color", "#befed6");
     script.setAttribute("data-position", "Right");
     script.setAttribute("data-x_margin", "18");
     script.setAttribute("data-y_margin", "18");
-
     script.onload = function () {
       var evt = document.createEvent("Event");
       evt.initEvent("DOMContentLoaded", false, false);

@@ -4,7 +4,6 @@ import throttle from "lodash/throttle";
 import { Col, Container, Row } from "react-bootstrap";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./style.module.css";
 
 function PdfViewer(props) {
   const params = useParams();
@@ -42,31 +41,32 @@ function PdfViewer(props) {
   }
 
   return (
-    <Container fluid>
-      <Row>
-        <Col xs={1} />
-        <Col xs={10} ref={pdfWrapper}>
-          <Document
-            file={file}
-            loading=""
-            className={styles.pdfPage}
-            onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-          >
-            {Array.apply(null, Array(numPages))
-              .map((x, i) => i + 1)
-              .map((page) => (
-                <Page
-                  loading=""
-                  pageNumber={page}
-                  key={page}
-                  width={initialWidth}
-                />
-              ))}
-          </Document>
-        </Col>
-        <Col xs={1} />
-      </Row>
-    </Container>
+    <>
+      <Container fluid>
+        <Row>
+          <Col xs={1} />
+          <Col xs={10} ref={pdfWrapper}>
+            <Document
+              file={file}
+              loading=""
+              onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+            >
+              {Array.apply(null, Array(numPages))
+                .map((x, i) => i + 1)
+                .map((page) => (
+                  <Page
+                    loading=""
+                    pageNumber={page}
+                    key={page}
+                    width={initialWidth}
+                  />
+                ))}
+            </Document>
+          </Col>
+          <Col xs={1} />
+        </Row>
+      </Container>
+    </>
   );
 }
 
