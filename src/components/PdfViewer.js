@@ -56,7 +56,16 @@ function PdfViewer(props) {
 
   /* State */
   const [numPages, setNumPages] = useState(null);
-  const [initialWidth, setInitialWidth] = useState(null);
+  const [width, setWidth] = useState(0);
+
+  /* Get PDF size from wrapper and update PDF component */
+  const setPdfSize = () => {
+    if (pdfWrapper && pdfWrapper.current) {
+      const newWidth = pdfWrapper.current.offsetWidth;
+      setWidth(newWidth);
+      console.log(newWidth);
+    }
+  };
 
   /* Add window resize event listener to manually resize PDF component */
   useEffect(() => {
@@ -65,20 +74,13 @@ function PdfViewer(props) {
     return () => {
       window.removeEventListener("resize", throttle(setPdfSize, 500));
     };
-  }, []);
+  }, [pdfWrapper]);
 
   /* Get PDF from path parameter */
   const fileName = props.file;
   const matches = Zines.filter((zine) => zine.path === fileName);
   const file = matches[0]?.file;
   const zine = matches[0];
-
-  /* Get PDF size from wrapper and update PDF component */
-  const setPdfSize = () => {
-    if (pdfWrapper && pdfWrapper.current) {
-      setInitialWidth(pdfWrapper.current.getBoundingClientRect().width);
-    }
-  };
 
   /* Return to homepage if file does not exist */
   if (!file) {
@@ -89,8 +91,8 @@ function PdfViewer(props) {
     <>
       <BackgroundContainer fluid>
         <Row>
-          <Col xs={2} md={4} />
-          <Col xs={8} md={4} ref={pdfWrapper}>
+          <Col xs={1} sm={4} />
+          <Col xs={8} sm={4} ref={pdfWrapper}>
             <Document
               file={file}
               loading=""
@@ -103,12 +105,12 @@ function PdfViewer(props) {
                     loading=""
                     pageNumber={page}
                     key={page}
-                    width={initialWidth}
+                    width={width}
                   />
                 ))}
             </Document>
           </Col>
-          <Col xs={2} md={4} />
+          <Col xs={2} sm={4} />
         </Row>
         <DownloadButton>
           <a href={zine.file} download={`${zine.path}.pdf`}>
