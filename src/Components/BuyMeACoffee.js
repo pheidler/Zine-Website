@@ -11,7 +11,7 @@ export default function BuyMeACoffee() {
     );
     script.setAttribute("data-name", "BMC-Widget");
     script.setAttribute("data-cfasync", "false");
-    script.setAttribute("data-id", "kirak");
+    script.setAttribute("data-id", "kkira");
     script.setAttribute(
       "data-description",
       "Support me by buying me a coffee!"

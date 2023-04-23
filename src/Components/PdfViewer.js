@@ -3,10 +3,54 @@ import React, { useEffect, useRef, useState } from "react";
 import throttle from "lodash/throttle";
 import { Col, Container, Row } from "react-bootstrap";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { Download } from "react-bootstrap-icons";
+
+const ZinePage = styled(Page)`
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`;
+
+const BackgroundContainer = styled(Container)`
+  background-color: #dddddd;
+`;
+
+const RoundedContainer = styled.div`
+  height: 40px;
+  width: 40px;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -khtml-border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: lightcyan;
+    cursor: pointer;
+  }
+`;
+
+// @ts-ignore
+const DownloadIcon = styled(Download)`
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  color: black;
+  stroke: 10px;
+`;
+
+const DownloadButton = styled.div`
+  position: fixed;
+  right: 30px;
+  bottom: 100px;
+`;
 
 function PdfViewer(props) {
-  const params = useParams();
   const navigate = useNavigate();
   const pdfWrapper = useRef(null);
 
@@ -24,9 +68,10 @@ function PdfViewer(props) {
   }, []);
 
   /* Get PDF from path parameter */
-  const fileName = params.title;
+  const fileName = props.file;
   const matches = Zines.filter((zine) => zine.path === fileName);
   const file = matches[0]?.file;
+  const zine = matches[0];
 
   /* Get PDF size from wrapper and update PDF component */
   const setPdfSize = () => {
@@ -42,10 +87,10 @@ function PdfViewer(props) {
 
   return (
     <>
-      <Container fluid>
+      <BackgroundContainer fluid>
         <Row>
-          <Col xs={1} />
-          <Col xs={10} ref={pdfWrapper}>
+          <Col xs={2} md={4} />
+          <Col xs={8} md={4} ref={pdfWrapper}>
             <Document
               file={file}
               loading=""
@@ -54,7 +99,7 @@ function PdfViewer(props) {
               {Array.apply(null, Array(numPages))
                 .map((x, i) => i + 1)
                 .map((page) => (
-                  <Page
+                  <ZinePage
                     loading=""
                     pageNumber={page}
                     key={page}
@@ -63,9 +108,16 @@ function PdfViewer(props) {
                 ))}
             </Document>
           </Col>
-          <Col xs={1} />
+          <Col xs={2} md={4} />
         </Row>
-      </Container>
+        <DownloadButton>
+          <a href={zine.file} download={`${zine.path}.pdf`}>
+            <RoundedContainer>
+              <DownloadIcon />
+            </RoundedContainer>
+          </a>
+        </DownloadButton>
+      </BackgroundContainer>
     </>
   );
 }
