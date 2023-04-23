@@ -63,7 +63,6 @@ function PdfViewer(props) {
     if (pdfWrapper && pdfWrapper.current) {
       const newWidth = pdfWrapper.current.offsetWidth;
       setWidth(newWidth);
-      console.log(newWidth);
     }
   };
 
