@@ -1,4 +1,4 @@
-import { Zines } from "./helper/Constants.js";
+import { Zines } from "../helper/Constants.js";
 import React, { useEffect, useRef, useState } from "react";
 import throttle from "lodash/throttle";
 import { Col, Container, Row } from "react-bootstrap";
